@@ -48,6 +48,12 @@ int lCreateModule(lua_State* L)
 	for(i=0;i<funcnums;++i)
 	{
 		(*udata)->funcs[i].func = (lua_CFunction)dlsym((*udata)->lib,(*udata)->funcs[i].name);
+		temp_sref = dlerror();
+		if(temp_sref)
+		{
+			lua_error(L);
+			return 0;
+		}
 	}
 	/*
 		  Stack:
