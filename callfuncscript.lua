@@ -1,0 +1,10 @@
+print("Hello World!\nI am trying to load a library! Wish me luck!\n\n")
+bar = extend.new("./libTestPlugin.so", { "foo" } )
+print("I think I loadded the lib, since I didn't crash yet.\n")
+bar:debugInfo()
+barbar = bar:register()
+print("And now I am registering them.\n")
+barbar.foo()
+print("Are we seeing it?.\n Now let's try to cause some errors by removing bar.")
+bar = nil
+barbar.foo()
